@@ -10,7 +10,7 @@ The base implementation of xv6 does not implement demand paging and the task is 
 
 I have implemented a user program (mydemandPage.c) to exercise this condition and see that it works. The user program uses a large sized global array write/read from this array to check for functioning of demand paging. Also, pgtPrint system call (implemented in Task-1) can be invoked intermittently to check that the page table is expanding as per demand paging.
 
-### 3. task 3: Implement logic to detect which pages have been accessed and/or dirty
+### 3. Task 3: Implement logic to detect which pages have been accessed and/or dirty
 In this task, the code base of Task-2 is extended and added a new feature to xv6 that detects and reports which pages have been accessed and/or modified (dirty) to userspace by inspecting the access and modified bits in the RISC-V page table. The RISC-V hardware page walker marks these bits in the PTE whenever it resolves a TLB miss.
 
 A new system call pgaccess() is implemented, that reports which pages have been accessed and/or dirty. The system call takes three arguments. First, it takes the starting virtual address of the first user page to check. Second, it takes the number of pages to check. Finally, it takes a user address to a buffer to store the results into a bitmask/bitmap (a data structure that uses two bits per page and where the first page corresponds to the least significant bit).
